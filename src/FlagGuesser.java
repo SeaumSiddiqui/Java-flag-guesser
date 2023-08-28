@@ -80,9 +80,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
         resetButton.setToolTipText("Reset Quiz");
         resetButton.setPreferredSize(new Dimension(60, 50));
         resetButton.addActionListener(this);
-        resetButton.setOpaque(false);
+        resetButton.setContentAreaFilled(false);
         resetButton.setBorderPainted(false);
-        resetButton.setBackground(null);
         resetButton.setFocusable(false);
 
         panel.add(resetButton);
@@ -90,8 +89,24 @@ public class FlagGuesser extends JFrame implements ActionListener {
         springLayout.putConstraint(SpringLayout.WEST, resetButton, 15, SpringLayout.WEST, panel);
         springLayout.putConstraint(SpringLayout.NORTH, resetButton, 50, SpringLayout.NORTH, panel);
 
-
         //6. Next Button
+        nextButton = ImageService.createImageButton("Resources/nextButton.png", "Next");
+        assert nextButton != null;
+        nextButton.setToolTipText("Next question");
+        nextButton.setPreferredSize(new Dimension(60, 70));
+        nextButton.addActionListener(this);
+        nextButton.setFocusable(false);
+        nextButton.setVisible(false);// only appear after user has pressed a button
+        nextButton.setContentAreaFilled(false);
+        nextButton.setBorderPainted(false);
+
+        panel.add(nextButton);
+
+        springLayout.putConstraint(SpringLayout.WEST, nextButton, 725, SpringLayout.WEST, panel);
+        springLayout.putConstraint(SpringLayout.NORTH, nextButton, 575, SpringLayout.NORTH, panel);
+
+
+
         this.getContentPane().add(panel);
     }
 
@@ -122,7 +137,7 @@ public class FlagGuesser extends JFrame implements ActionListener {
     }
 
     private void loadQuestion() {
-        questions = new ArrayList<QuestionFlag>();
+        questions = new ArrayList<>();
 
         // create and store the flag questions
         for (int i = 0; i < QUESTION_AMOUNT; i++) {
@@ -156,7 +171,7 @@ public class FlagGuesser extends JFrame implements ActionListener {
             // update GUI
             updateGUI();
         }
-        else if (command.equals("next"))
+        else if (command.equals("Next"))
         {
             nextButton.setVisible(false);
             firstChoice = false;
@@ -186,7 +201,7 @@ public class FlagGuesser extends JFrame implements ActionListener {
                 button.setBackground(Color.RED);
             }
 
-            // set next button
+            // set next button visible
             if (currentFlagNumber < QUESTION_AMOUNT - 1 && !nextButton.isVisible())
             {
                 nextButton.setVisible(true);
@@ -201,9 +216,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
 
     private void updateGUI() {
         // reset color of option buttons
-        for (int i = 0; i < optionButtons.size(); i++)
-        {
-            optionButtons.get(i).setBackground(null);
+        for (JButton optionButton : optionButtons) {
+            optionButton.setBackground(null);
         }
 
         //update question number
@@ -216,11 +230,25 @@ public class FlagGuesser extends JFrame implements ActionListener {
         for (int i = 0; i < 4; i++)
         {
             optionButtons.get(i).setText(currentFlag.getAnswerList().get(i));
-
         }
     }
 
     private void launchFinishedDialog() {
+        JDialog gameOver = new JDialog();
+        gameOver.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+        gameOver.setPreferredSize(new Dimension(400, 200));
+        gameOver.pack();
+        gameOver.setLayout(springLayout);
+        gameOver.setLocationRelativeTo(this);
 
+
+        JLabel scoreResult = new JLabel("Score: " + (score) + "/" + QUESTION_AMOUNT);
+        scoreResult.setFont(new Font("Dialog", Font.BOLD, 18));
+
+        springLayout.putConstraint(SpringLayout.WEST, scoreResult, 135, SpringLayout.WEST, gameOver);
+        springLayout.putConstraint(SpringLayout.NORTH, scoreResult, 65, SpringLayout.NORTH, gameOver);
+
+        gameOver.add(scoreResult);
+        gameOver.setVisible(true);
     }
 }
