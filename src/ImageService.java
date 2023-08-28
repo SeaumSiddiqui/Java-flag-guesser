@@ -4,9 +4,25 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.Buffer;
 
 public class ImageService {
+
+    public static void updateImage(JLabel imageContainer, String resourcePath, boolean isResized, int targetWidth, int targetHeight)
+    {
+        BufferedImage image;
+        try{
+            InputStream inputStream = ImageService.class.getResourceAsStream(resourcePath);
+            assert inputStream != null;
+            image = ImageIO.read(inputStream);
+
+            if (isResized)
+                image = resizedImage(image, targetWidth, targetHeight);
+            imageContainer.setIcon(new ImageIcon(image));
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+        }
+    }
 
     public static JLabel loadImage(String resourcePath, boolean isResized, int targetWidth, int targetHeight)
     {
@@ -19,8 +35,8 @@ public class ImageService {
 
             if (isResized)
                 image = resizedImage(image, targetWidth, targetHeight);
-
             imageContainer = new JLabel(new ImageIcon(image));
+
             return imageContainer;
 
         } catch (Exception e) {

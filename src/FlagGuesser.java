@@ -1,12 +1,15 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class FlagGuesser extends JFrame {
+public class FlagGuesser extends JFrame implements ActionListener {
     private static final int QUESTION_AMOUNT = 15;
     private List<QuestionFlag> questions;
+    private List<JButton> optionButtons;
     private QuestionFlag currentFlag;
     private final SpringLayout springLayout;
     private JLabel flagNumberLabel, currentFlagImage;
@@ -71,24 +74,128 @@ public class FlagGuesser extends JFrame {
         this.getContentPane().add(panel);
     }
 
-    private void loadQuestion()
+    private JPanel loadButton()
     {
+        JPanel buttonPanel = new JPanel();
+        GridLayout gridLayout = new GridLayout(2, 2);
+        gridLayout.setHgap(25);
+        gridLayout.setVgap(25);
+
+        optionButtons = new ArrayList<>();
+
+        for (int i = 0; i < 4; i++)
+        {
+            JButton button = new JButton(currentFlag.getAnswerList().get(i));
+            button.addActionListener(this);
+            button.setFont(new Font("Dialog", Font.BOLD, 18));
+            button.setPreferredSize(new Dimension(300, 100));
+
+            optionButtons.add(button);
+            buttonPanel.add(optionButtons.get(i));
+        }
+        return buttonPanel;
+    }
+
+    private void loadQuestion() {
         questions = new ArrayList<QuestionFlag>();
 
         // create and store the flag questions
-        for (int i = 0; i < QUESTION_AMOUNT; i++)
-        {
+        for (int i = 0; i < QUESTION_AMOUNT; i++) {
             questions.add(new QuestionFlag(i));
         }
 
         // randomize questions
-        for (int i = 0; i<QUESTION_AMOUNT; i++)
-        {
+        for (int i = 0; i < QUESTION_AMOUNT; i++) {
             int randIndex = new Random().nextInt(QUESTION_AMOUNT);
             QuestionFlag temp = questions.get(i);
             questions.set(i, questions.get(randIndex));
             questions.set(randIndex, temp);
         }
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String command = e.getActionCommand();
+
+        if (command.equals("reset"))
+        {
+            // reset score
+            score = 0;
+
+            // reset question number
+            currentFlagNumber = 0;
+
+            // load new batch of question
+            loadQuestion();
+
+            // update GUI
+            updateGUI();
+        }
+        else if (command.equals("next"))
+        {
+            nextButton.setVisible(false);
+            firstChoice = false;
+
+            // go to the next question
+            currentFlagNumber ++;
+
+            // update GUI
+            updateGUI();
+        }
+        else{
+            // option button
+            JButton button = (JButton) e.getSource();
+
+            if (currentFlag.getCorrectAnswer().equals(command))
+            {
+                // indicate correct answer
+                button.setBackground(Color.GREEN);
+
+                // update score
+                if (!firstChoice)
+                {
+                    ++score;
+                }
+            }
+            else {
+                button.setBackground(Color.RED);
+            }
+
+            // set next button
+            if (currentFlagNumber < QUESTION_AMOUNT - 1 && !nextButton.isVisible())
+            {
+                nextButton.setVisible(true);
+            }
+            firstChoice = true;
+        }
+        if (firstChoice && currentFlagNumber == QUESTION_AMOUNT - 1)
+        {
+            launchFinishedDialog();
+        }
+    }
+
+    private void updateGUI() {
+        // reset color of option buttons
+        for (int i = 0; i < optionButtons.size(); i++)
+        {
+            optionButtons.get(i).setBackground(null);
+        }
+
+        //update question number
+        flagNumberLabel.setText((currentFlagNumber + 1) + ".");
+
+        //update flag image and answer
+        currentFlag = questions.get(currentFlagNumber);
+        ImageService.updateImage(currentFlagImage, currentFlag.getImgPath(), true, 350, 225);
+
+        for (int i = 0; i < 4; i++)
+        {
+            optionButtons.get(i).setText(currentFlag.getAnswerList().get(i));
+
+        }
+    }
+
+    private void launchFinishedDialog() {
 
     }
 }
