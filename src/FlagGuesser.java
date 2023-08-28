@@ -64,20 +64,43 @@ public class FlagGuesser extends JFrame implements ActionListener {
         panel.add(currentFlagImage);
 
         springLayout.putConstraint(SpringLayout.WEST, currentFlagImage, 230, SpringLayout.WEST, panel);
-        springLayout.putConstraint(SpringLayout.NORTH, currentFlagImage, 175, SpringLayout.NORTH, panel);
+        springLayout.putConstraint(SpringLayout.NORTH, currentFlagImage, 150, SpringLayout.NORTH, panel);
 
-        //4. Answer Button
+        //4. Answer Buttons
+        JPanel answerPanel = loadButtons();
+        panel.add(answerPanel);
+
+        springLayout.putConstraint(SpringLayout.WEST, answerPanel, 80, SpringLayout.WEST, panel);
+        springLayout.putConstraint(SpringLayout.NORTH, answerPanel, 400, SpringLayout.NORTH, panel);
 
         //5. Reset Button
+        JButton resetButton = ImageService.createImageButton("Resources/resetButton.png", "Reset");
+
+        assert resetButton != null;
+        resetButton.setToolTipText("Reset Quiz");
+        resetButton.setPreferredSize(new Dimension(60, 50));
+        resetButton.addActionListener(this);
+        resetButton.setOpaque(false);
+        resetButton.setBorderPainted(false);
+        resetButton.setBackground(null);
+        resetButton.setFocusable(false);
+
+        panel.add(resetButton);
+
+        springLayout.putConstraint(SpringLayout.WEST, resetButton, 15, SpringLayout.WEST, panel);
+        springLayout.putConstraint(SpringLayout.NORTH, resetButton, 50, SpringLayout.NORTH, panel);
+
 
         //6. Next Button
         this.getContentPane().add(panel);
     }
 
-    private JPanel loadButton()
+    private JPanel loadButtons()
     {
         JPanel buttonPanel = new JPanel();
         GridLayout gridLayout = new GridLayout(2, 2);
+        buttonPanel.setLayout(gridLayout);
+        buttonPanel.setBackground(Color.BLACK);
         gridLayout.setHgap(25);
         gridLayout.setVgap(25);
 
@@ -87,6 +110,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
         {
             JButton button = new JButton(currentFlag.getAnswerList().get(i));
             button.addActionListener(this);
+            button.setFocusable(false);
+            button.setBackground(null);
             button.setFont(new Font("Dialog", Font.BOLD, 18));
             button.setPreferredSize(new Dimension(300, 100));
 
@@ -117,7 +142,7 @@ public class FlagGuesser extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String command = e.getActionCommand();
 
-        if (command.equals("reset"))
+        if (command.equals("Reset"))
         {
             // reset score
             score = 0;

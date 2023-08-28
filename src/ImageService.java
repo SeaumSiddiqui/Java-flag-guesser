@@ -24,6 +24,25 @@ public class ImageService {
         }
     }
 
+    public static JButton createImageButton(String resourcePath, String command)
+    {
+        BufferedImage image;
+        JButton imageButton;
+        try{
+            InputStream inputStream = ImageService.class.getResourceAsStream(resourcePath);
+            assert inputStream != null;
+            image = ImageIO.read(inputStream);
+
+            imageButton = new JButton(command);
+            imageButton.setIcon(new ImageIcon(image));
+
+            return imageButton;
+        } catch (Exception e) {
+            System.out.println("Error: " + e);
+            return null;
+        }
+    }
+
     public static JLabel loadImage(String resourcePath, boolean isResized, int targetWidth, int targetHeight)
     {
         BufferedImage image;

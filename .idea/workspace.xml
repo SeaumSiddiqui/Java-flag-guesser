@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255761ce-e8d8-4bd0-9429-4e6276e11dbc" name="Changes" comment="Updated in-memory db CountryNameDB&#10;-added all the country names&#10;-added all the flags">
+    <list default="true" id="255761ce-e8d8-4bd0-9429-4e6276e11dbc" name="Changes" comment="-added option buttons&#10;-functionality added to update score and GUI&#10;-new updateImage method in class ImageService">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlagGuesser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlagGuesser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/QuestionFlag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuestionFlag.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,7 +85,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693232662813</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="-added option buttons&#10;-functionality added to update score and GUI&#10;-new updateImage method in class ImageService">
+      <created>1693245927719</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1693245927719</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -102,6 +110,7 @@
     <MESSAGE value="Init commit" />
     <MESSAGE value="-Updated class QuestionFlag.java" />
     <MESSAGE value="Updated in-memory db CountryNameDB&#10;-added all the country names&#10;-added all the flags" />
-    <option name="LAST_COMMIT_MESSAGE" value="Updated in-memory db CountryNameDB&#10;-added all the country names&#10;-added all the flags" />
+    <MESSAGE value="-added option buttons&#10;-functionality added to update score and GUI&#10;-new updateImage method in class ImageService" />
+    <option name="LAST_COMMIT_MESSAGE" value="-added option buttons&#10;-functionality added to update score and GUI&#10;-new updateImage method in class ImageService" />
   </component>
 </project>
