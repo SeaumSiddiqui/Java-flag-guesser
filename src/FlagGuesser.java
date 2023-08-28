@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 public class FlagGuesser extends JFrame {
-    private static final int QUESTION_AMOUNT = 3;
+    private static final int QUESTION_AMOUNT = 15;
     private List<QuestionFlag> questions;
     private QuestionFlag currentFlag;
     private final SpringLayout springLayout;

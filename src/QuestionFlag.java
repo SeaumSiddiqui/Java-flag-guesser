@@ -18,7 +18,7 @@ public class QuestionFlag {
     }
 
     public QuestionFlag(int index){
-        this.imgPath = "Resources/flag" + (index + 1) + ".png";
+        this.imgPath = "Resources/Flags/flag" + (index + 1) + ".png";
         this.correctAnswer = findAnswerByIndex(index);
         this.answerList = loadAnswerPool();
     }
