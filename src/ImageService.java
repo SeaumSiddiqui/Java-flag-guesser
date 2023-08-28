@@ -31,9 +31,11 @@ public class ImageService {
 
     private static BufferedImage resizedImage(BufferedImage image, int targetWidth, int targetHeight) {
         BufferedImage newImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
+
         Graphics2D graphics2D = newImage.createGraphics();
         graphics2D.drawImage(image, 0, 0, targetWidth, targetHeight, null);
         graphics2D.dispose();
+
         return newImage;
     }
 }
