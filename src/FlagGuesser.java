@@ -17,8 +17,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
     private boolean firstChoice;
     int currentFlagNumber, score;
 
-    public FlagGuesser()
-    {
+    public FlagGuesser() {
+
         super("Flag Guesser");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 700));
@@ -39,10 +39,12 @@ public class FlagGuesser extends JFrame implements ActionListener {
     }
 
     private void addGuiComponents() {
+
         JPanel panel = new JPanel();
 
         panel.setLayout(springLayout);
         panel.setBackground(new Color(255, 248, 199));
+
 
         //1. Banner Image
         JLabel bannerImg = ImageService.loadImage("Resources/Banner.png", true, 600, 100);
@@ -83,7 +85,6 @@ public class FlagGuesser extends JFrame implements ActionListener {
         resetButton.setContentAreaFilled(false);
         resetButton.setBorderPainted(false);
         resetButton.setFocusable(false);
-
         panel.add(resetButton);
 
         springLayout.putConstraint(SpringLayout.WEST, resetButton, 20, SpringLayout.WEST, panel);
@@ -99,18 +100,17 @@ public class FlagGuesser extends JFrame implements ActionListener {
         nextButton.setVisible(false);// only appear after user has pressed a button
         nextButton.setContentAreaFilled(false);
         nextButton.setBorderPainted(false);
-
         panel.add(nextButton);
 
         springLayout.putConstraint(SpringLayout.WEST, nextButton, 710, SpringLayout.WEST, panel);
         springLayout.putConstraint(SpringLayout.NORTH, nextButton, 570, SpringLayout.NORTH, panel);
 
 
-
         this.getContentPane().add(panel);
     }
 
     private JPanel loadButtons() {
+
         JPanel buttonPanel = new JPanel();
         GridLayout gridLayout = new GridLayout(2, 2);
 
@@ -121,9 +121,10 @@ public class FlagGuesser extends JFrame implements ActionListener {
 
         optionButtons = new ArrayList<>();
 
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
+
             JButton button = new JButton(currentFlag.getAnswerList().get(i));
+
             button.addActionListener(this);
             button.setFocusable(false);
             button.setBackground(null);
@@ -137,19 +138,21 @@ public class FlagGuesser extends JFrame implements ActionListener {
     }
 
     private void loadQuestion() {
+
         questions = new ArrayList<>();
 
         // create and store the flag questions
-        for (int i = 0; i < CountryNameDB.countryNameDB.length; i++)
-        {
+        for (int i = 0; i < CountryNameDB.countryNameDB.length; i++) {
+
             questions.add(new QuestionFlag(i));
         }
 
         // randomize questions
-        for (int i = 0; i <CountryNameDB.countryNameDB.length; i++)
-        {
+        for (int i = 0; i <CountryNameDB.countryNameDB.length; i++) {
+
             int randIndex = new Random().nextInt(CountryNameDB.countryNameDB.length);
             QuestionFlag temp = questions.get(i);
+
             questions.set(i, questions.get(randIndex));
             questions.set(randIndex, temp);
         }
@@ -157,10 +160,11 @@ public class FlagGuesser extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
         String command = e.getActionCommand();
 
-        if (command.equals("Reset"))
-        {
+        if (command.equals("Reset")) {
+
             // reset score
             score = 0;
 
@@ -173,8 +177,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
             // update GUI
             updateGUI();
         }
-        else if (command.equals("Next"))
-        {
+        else if (command.equals("Next")) {
+
             nextButton.setVisible(false);
             firstChoice = false;
 
@@ -184,40 +188,42 @@ public class FlagGuesser extends JFrame implements ActionListener {
             // update GUI
             updateGUI();
         } else{
+
             // option button
             JButton button = (JButton) e.getSource();
 
-            if (currentFlag.getCorrectAnswer().equals(command))
-            {
+            if (currentFlag.getCorrectAnswer().equals(command)) {
+
                 // indicate correct answer
                 button.setBackground(Color.green);
 
                 // update score
-                if (!firstChoice)
-                {
-                    score += 10;
-                }
+                if (!firstChoice) score += 10;
+
             } else {
+
                 button.setBackground(Color.RED);
             }
 
             // set next button visible
-            if (currentFlagNumber < QUESTION_AMOUNT - 1 && !nextButton.isVisible())
-            {
+            if (currentFlagNumber < QUESTION_AMOUNT - 1 && !nextButton.isVisible()) {
+
                 nextButton.setVisible(true);
             }
             firstChoice = true;
         }
-        if (firstChoice && currentFlagNumber == QUESTION_AMOUNT - 1)
-        {
+
+        if (firstChoice && currentFlagNumber == QUESTION_AMOUNT - 1) {
+
             launchFinishedDialog();
         }
     }
 
     private void updateGUI() {
+
         // reset color of option buttons
-        for (JButton optionButton : optionButtons)
-        {
+        for (JButton optionButton : optionButtons) {
+
             optionButton.setBackground(null);
         }
 
@@ -228,14 +234,16 @@ public class FlagGuesser extends JFrame implements ActionListener {
         currentFlag = questions.get(currentFlagNumber);
         ImageService.updateImage(currentFlagImage, currentFlag.getImgPath(), true, 350, 225);
 
-        for (int i = 0; i < 4; i++)
-        {
+        for (int i = 0; i < 4; i++) {
+
             optionButtons.get(i).setText(currentFlag.getAnswerList().get(i));
         }
     }
 
     private void launchFinishedDialog() {
+
         JDialog endScreen = new JDialog();
+
         endScreen.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
         endScreen.setPreferredSize(new Dimension(350, 175));
         endScreen.setUndecorated(true); // Remove window decorations for custom appearance
@@ -247,11 +255,12 @@ public class FlagGuesser extends JFrame implements ActionListener {
 
 
         JLabel scoreResult = new JLabel("Score: " + score);
+
         scoreResult.setForeground(Color.WHITE);
         scoreResult.setFont(new Font("Dialog", Font.BOLD, 25));
 
-        springLayout.putConstraint(SpringLayout.WEST, scoreResult, 135, SpringLayout.WEST, endScreen);
-        springLayout.putConstraint(SpringLayout.NORTH, scoreResult, 65, SpringLayout.NORTH, endScreen);
+        springLayout.putConstraint(SpringLayout.WEST, scoreResult, 120, SpringLayout.WEST, endScreen);
+        springLayout.putConstraint(SpringLayout.NORTH, scoreResult, 75, SpringLayout.NORTH, endScreen);
 
         endScreen.add(scoreResult);
         endScreen.setVisible(true);
