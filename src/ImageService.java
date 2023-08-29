@@ -6,9 +6,10 @@ import java.io.InputStream;
 
 public class ImageService {
 
-    public static void updateImage(JLabel imageContainer, String resourcePath, boolean isResized, int targetWidth, int targetHeight)
-    {
+    public static void updateImage(JLabel imageContainer, String resourcePath, boolean isResized, int targetWidth, int targetHeight) {
+
         BufferedImage image;
+
         try{
             InputStream inputStream = ImageService.class.getResourceAsStream(resourcePath);
             assert inputStream != null;
@@ -23,10 +24,11 @@ public class ImageService {
         }
     }
 
-    public static JButton createImageButton(String resourcePath, String command)
-    {
+    public static JButton createImageButton(String resourcePath, String command) {
+
         BufferedImage image;
         JButton imageButton;
+
         try{
             InputStream inputStream = ImageService.class.getResourceAsStream(resourcePath);
             assert inputStream != null;
@@ -42,10 +44,11 @@ public class ImageService {
         }
     }
 
-    public static JLabel loadImage(String resourcePath, boolean isResized, int targetWidth, int targetHeight)
-    {
+    public static JLabel loadImage(String resourcePath, boolean isResized, int targetWidth, int targetHeight) {
+
         BufferedImage image;
         JLabel imageContainer;
+
         try {
             InputStream inputStream = ImageService.class.getResourceAsStream(resourcePath);
             assert inputStream != null;
@@ -64,9 +67,10 @@ public class ImageService {
     }
 
     private static BufferedImage resizedImage(BufferedImage image, int targetWidth, int targetHeight) {
-        BufferedImage newImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
 
+        BufferedImage newImage = new BufferedImage(targetWidth, targetHeight, BufferedImage.TYPE_INT_RGB);
         Graphics2D graphics2D = newImage.createGraphics();
+
         graphics2D.drawImage(image, 0, 0, targetWidth, targetHeight, null);
         graphics2D.dispose();
 
