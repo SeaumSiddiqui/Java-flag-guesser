@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255761ce-e8d8-4bd0-9429-4e6276e11dbc" name="Changes" comment="-Methods completed to get the correct answer an answer list.&#10;-Function created to create image while updating GUI.">
-      <change afterPath="$PROJECT_DIR$/src/Resources/nextButton.png" afterDir="false" />
+    <list default="true" id="255761ce-e8d8-4bd0-9429-4e6276e11dbc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlagGuesser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlagGuesser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/QuestionFlag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuestionFlag.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +98,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693251589402</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-Next button fixed&#10;-Created new ending screen to show the final score of the user">
+      <created>1693258294457</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1693258294457</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +125,7 @@
     <MESSAGE value="Updated in-memory db CountryNameDB&#10;-added all the country names&#10;-added all the flags" />
     <MESSAGE value="-added option buttons&#10;-functionality added to update score and GUI&#10;-new updateImage method in class ImageService" />
     <MESSAGE value="-Methods completed to get the correct answer an answer list.&#10;-Function created to create image while updating GUI." />
-    <option name="LAST_COMMIT_MESSAGE" value="-Methods completed to get the correct answer an answer list.&#10;-Function created to create image while updating GUI." />
+    <MESSAGE value="-Next button fixed&#10;-Created new ending screen to show the final score of the user" />
+    <option name="LAST_COMMIT_MESSAGE" value="-Next button fixed&#10;-Created new ending screen to show the final score of the user" />
   </component>
 </project>

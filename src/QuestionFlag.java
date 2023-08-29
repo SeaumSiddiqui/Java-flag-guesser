@@ -1,13 +1,11 @@
-import jdk.jshell.EvalException;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class QuestionFlag {
-    private String imgPath;
-    private String correctAnswer;
-    private List<String> answerList;
+    private final String imgPath;
+    private final String correctAnswer;
+    private final List<String> answerList;
 
     public String getImgPath()
     {
@@ -70,7 +68,7 @@ public class QuestionFlag {
     private void randomizeAnswer(List<String> answersList, int randIndex) {
         if (randIndex == 0) return; // no point with switching itself
 
-        // switch with the correct answer as the rest is already randomize
+        // switch with the correct answer only as the rest is already randomize
         answersList.set(0, answersList.get(randIndex));
         answersList.set(randIndex, correctAnswer);
     }

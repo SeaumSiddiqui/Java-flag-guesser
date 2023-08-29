@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 public class FlagGuesser extends JFrame implements ActionListener {
-    private static final int QUESTION_AMOUNT = 15;
+    private static final int QUESTION_AMOUNT = 10;
     private List<QuestionFlag> questions;
     private List<JButton> optionButtons;
     private QuestionFlag currentFlag;
@@ -140,13 +140,15 @@ public class FlagGuesser extends JFrame implements ActionListener {
         questions = new ArrayList<>();
 
         // create and store the flag questions
-        for (int i = 0; i < QUESTION_AMOUNT; i++) {
+        for (int i = 0; i < CountryNameDB.countryNameDB.length; i++)
+        {
             questions.add(new QuestionFlag(i));
         }
 
         // randomize questions
-        for (int i = 0; i < QUESTION_AMOUNT; i++) {
-            int randIndex = new Random().nextInt(QUESTION_AMOUNT);
+        for (int i = 0; i <CountryNameDB.countryNameDB.length; i++)
+        {
+            int randIndex = new Random().nextInt(CountryNameDB.countryNameDB.length);
             QuestionFlag temp = questions.get(i);
             questions.set(i, questions.get(randIndex));
             questions.set(randIndex, temp);
@@ -181,8 +183,7 @@ public class FlagGuesser extends JFrame implements ActionListener {
 
             // update GUI
             updateGUI();
-        }
-        else{
+        } else{
             // option button
             JButton button = (JButton) e.getSource();
 
@@ -192,12 +193,11 @@ public class FlagGuesser extends JFrame implements ActionListener {
                 button.setBackground(Color.GREEN);
 
                 // update score
-                if (!firstChoice)
-                {
-                    ++score;
-                }
-            }
-            else {
+               if (!firstChoice)
+               {
+                  score += 10;
+               }
+            } else {
                 button.setBackground(Color.RED);
             }
 
@@ -216,7 +216,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
 
     private void updateGUI() {
         // reset color of option buttons
-        for (JButton optionButton : optionButtons) {
+        for (JButton optionButton : optionButtons)
+        {
             optionButton.setBackground(null);
         }
 
@@ -242,8 +243,8 @@ public class FlagGuesser extends JFrame implements ActionListener {
         gameOver.setLocationRelativeTo(this);
 
 
-        JLabel scoreResult = new JLabel("Score: " + (score) + "/" + QUESTION_AMOUNT);
-        scoreResult.setFont(new Font("Dialog", Font.BOLD, 18));
+        JLabel scoreResult = new JLabel("Score: " + score);
+        scoreResult.setFont(new Font("Dialog", Font.BOLD, 20));
 
         springLayout.putConstraint(SpringLayout.WEST, scoreResult, 135, SpringLayout.WEST, gameOver);
         springLayout.putConstraint(SpringLayout.NORTH, scoreResult, 65, SpringLayout.NORTH, gameOver);
