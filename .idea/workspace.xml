@@ -1,17 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="Flag Guesser:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="255761ce-e8d8-4bd0-9429-4e6276e11dbc" name="Changes" comment="-transparent background for end screen &#10;-components resized: flag image, reset button, next button">
+    <list default="true" id="255761ce-e8d8-4bd0-9429-4e6276e11dbc" name="Changes" comment="minor changes on component's size and padding">
+      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Flag_Guesser_jar.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Resources/FlagGuesser.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CountryNameDB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CountryNameDB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CountryNames" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FlagGuesser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FlagGuesser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ImageService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuestionFlag.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuestionFlag.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,18 +38,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/SUCCESS/IdeaProjects/Pong Game",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.29895833"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "module"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
@@ -123,7 +132,21 @@
       <option name="project" value="LOCAL" />
       <updated>1693313628733</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="minor changes on component's size and padding">
+      <created>1693346025318</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693346025319</updated>
+    </task>
+    <task id="LOCAL-00011" summary="minor changes on component's size and padding">
+      <created>1693346041405</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693346041405</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -146,6 +169,7 @@
     <MESSAGE value="-Next button fixed&#10;-Created new ending screen to show the final score of the user" />
     <MESSAGE value="Fixed bug to load questions from all over the db instead of first 5 only.&#10;-score incriminate by 10 points now&#10;-QUESTION_AMOUNT is set to 10 now" />
     <MESSAGE value="-transparent background for end screen &#10;-components resized: flag image, reset button, next button" />
-    <option name="LAST_COMMIT_MESSAGE" value="-transparent background for end screen &#10;-components resized: flag image, reset button, next button" />
+    <MESSAGE value="minor changes on component's size and padding" />
+    <option name="LAST_COMMIT_MESSAGE" value="minor changes on component's size and padding" />
   </component>
 </project>

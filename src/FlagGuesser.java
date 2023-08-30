@@ -20,6 +20,9 @@ public class FlagGuesser extends JFrame implements ActionListener {
     public FlagGuesser() {
 
         super("Flag Guesser");
+        ImageIcon icon = new ImageIcon("C:\\Users\\SUCCESS\\Git Directory\\Flag Guesser\\src\\Resources\\FlagGuesser.png");
+
+        setIconImage(icon.getImage());
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(800, 700));
         pack();
